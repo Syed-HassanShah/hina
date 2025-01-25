@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kahloon Hub</title>
+    <style>
+        /* General Styles */
+        body {	
+  background-image: url(''); /* replace with your image file */
+  background-size: cover;
+  background-position: center;
+}
+@media (max-width: 768px) {
+    .watch-list {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+}
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #000000; /* Dark color for headings */
+        }
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            color: #000000; /* Dark color for headings */
+        }
+
+        a {
+            color: #8c8c8c; /* Grey color */
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2b2b4d, #4d5f6d); /* Luxury dark gradient */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #000000;
+        }
+
+        header nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            font-size: 18px;
+            color: #000000;
+            font-weight: bold;
+        }
+
+        header nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero-content {
+  background-image: url('https://st2.depositphotos.com/12898994/50862/i/450/depositphotos_508622564-stock-photo-men-mechanical-watches-desk-workplace.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 200px; /* adjust padding to maintain white boundary */
+  border-radius: 0px; /* adjust border radius to maintain white boundary */
+}
+
+        .hero-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            text-shadow: 2px 2px 5px rgba(24, 22, 22, 0.7);
+            max-width: 70%;
+            color: #ffffff
+        }
+
+        /* Watch Display Section */
+        .watches, .about, .contact, .address, footer {
+  background-color:  #4d5f6d; /* Light grey color */
+}
+
+        .watches {
+            padding: 60px 0;
+            text-align: center;
+            background-color: #4d5f6d; /* Light pastel blue */
+        }
+
+        .watches h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #000000;
+            text-shadow: #ffffff;
+        }
+
+        .watch-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .watch {
+            background-color:#939398;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .watch:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .watch img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .watch:hover img {
+            transform: scale(1.1); /* Subtle zoom effect on hover */
+        }
+
+        .watch h3 {
+            margin-top: 15px;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .watch p {
+            font-size: 18px;
+            color: #333;
+        }
+.watch button {
+    background-color: #4c4c8a;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; 
+}
+.watch button:hover {
+    background-color: #3e3e6b;
+}
+      /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .modal h3 {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .modal p {
+            font-size: 18px;
+            color: #000000;
+        }
+
+        .modal .close {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal .close:hover {
+            background-color: #ff4500;
+        }
+
+        /* Cart Section */
+        .cart {
+            padding: 30px;
+            background-color: #4d5f6d; /* Light pastel blue */
+            box-shadow: 0 4px 10px #000000;
+            margin-top: 50px;
+            border-radius: 10px;
+        }
+
+        .cart h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+
+        .cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cart ul li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart .total {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .cart .checkout {
+            width: 100%;
+            background-color: #939398; /* Matching store theme color */
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cart .checkout:hover {
+            background-color: #6d6d91; /* Darker shade of store color */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #4a4a67; /* Dark gradient */
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* Address Section */
+        .address, .about, .contact {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .address h2, .about h2, .contact h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Kahloon Hub</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#cart">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>"Elegance in Every Tick, Precision in Every Moment"</h2>
+        </div>
+    </section>
+
+    <!-- Watches Collection Section -->
+    <section class="watches">
+        <h2>Explore Our Watch Collection</h2>
+        <div class="watch-list">
+            <!-- Watch 1 -->
+            <div class="watch" data-name="The Kahloon Classic" data-price="1200">
+                <img src="https://c0.wallpaperflare.com/preview/272/970/559/clock-watch-fossil-dial.jpg"alt="The Kahloon Classic">
+                <h3>The Kahloon Classic</h3>
+                <p>$1,200</p>
+                <button
+                onclick="addToCart(event)">Add to Cart</button>
+            </div>
+            <!-- Watch 2 -->
+            <div class="watch" data-name="The Elite Chrono" data-price="1500">
+                <img src="https://ae01.alicdn.com/kf/S1236fc03a72a4b0b9a5d66ffd4713a64e.jpg" alt="The Elite Chrono">
+                <h3>The Elite Chrono</h3>
+                <p>$1,500</p>
+                <button
+                onclick="addToCart(event)">Add to Cart</button>
+            </div>
+            <!-- Watch 3 -->
+            <div class="watch" data-name="The Kahloon Diver" data-price="2000">
+                <img src="https://www.bobswatches.com/rolex-blog/wp-content/uploads/2020/12/Screen-Shot-2020-12-11-at-1.02.13-PM.jpg" alt="The Kahloon Diver">
+                <h3>The Kahloon Diver</h3>
+                <p>$2,000</p>
+                <button
+                onclick="addToCart(event)">Add to Cart</button>
+            </div>
+            <!-- Watch 4 -->
+            <div class="watch" data-name="The Moonlight Racer" data-price="1800">
+                <img src="https://www.bobswatches.com/images/managed/racing-watches-3.jpg" alt="The Moonlight Racer">
+                <h3>The Moonlight Racer</h3>
+                <p>$1,800</p>
+                <button
+                onclick="addToCart(event)">Add to Cart</button>
+            </div>
+            <!-- Watch 5 -->
+            <div class="watch" data-name="The Classic Luxury" data-price="2500">
+                <img src="https://monochrome-watches.com/wp-content/uploads/2020/11/Audemars-Piguet-Royal-Oak-Double-Balance-Wheel-Openworked-Ceramic-41mm-15416CE.OO_.1225CE.01-review-8.jpg" alt="The Classic Luxury">
+                <h3>The Classic Luxury</h3>
+                <p>$2,500</p>
+                <button
+                onclick="addToCart(event)">Add to Cart</button>
+            </div>
+            <!-- Watch 6 -->
+            <div class="watch" data-name="The Silver Heritage" data-price="2200">
+                <img src="https://www.phigora.com/cdn/shop/articles/watch-of-the-month-breitling-superocean-heritage-ii-chronograph-46-646946.jpg?v=1583782162" alt="The Silver Heritage">
+                <h3>The Silver Heritage</h3>
+                <p>$2,200</p>
+                <button
+                onclick="addToCart(event)">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Watch Details -->
+    <div id="watchModal" class="modal">
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+            <h3 id="modalTitle"></h3>
+            <p id="modalDescription"></p>
+            <button class="close" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Cart Section -->
+    <section class="cart" id="cart">
+        <h3>Shopping Cart</h3>
+        <ul id="cart-items"></ul>
+        <div class="total">
+            Total: $<span id="cart-total">0</span>
+        </div>
+        <button class="checkout" onclick="checkout()">Checkout (Cash on Delivery)</button>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about" id="about">
+        <h2>About Us</h2>
+        <p>Kahloon Hub offers a collection of luxurious timepieces that blend timeless design with modern precision. Each watch is crafted to perfection.</p>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@kahloohub.com</p>
+        <p>Phone: +923061620121</p>
+    </section>
+
+    <!-- Address Section -->
+    <section class="address">
+        <h2>Our Address</h2>
+        <p>Kahloon Hub, University Road, Sargodha</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Kahloon Hub | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // JavaScript to handle cart functionality
+        document.querySelectorAll("a[href^='#']").forEach(anchor => {
+  anchor.addEventListener("click", function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
+        const cart = [];
+        function addToCart(event) {
+  console.log('addToCart function called');
+  const watchElement = event.target.closest('.watch');
+  if (!watchElement) {
+    console.error('Watch element not found');
+    return;
+  }
+  const name = watchElement.getAttribute('data-name');
+  const price = parseFloat(watchElement.getAttribute('data-price'));
+  if (!name || isNaN(price)) {
+    console.error('Invalid watch attributes:', { name, price });
+    return;
+  }
+
+  const item = { name, price };
+  const cart = getCart();
+  cart.push(item);
+  saveCart(cart);
+  updateCartDisplay();
+  alert(`${name} has been added to your cart!`);
+}
+
+function updateCartDisplay() {
+  const cartSection = document.getElementById('cart');
+  const cartList = document.getElementById('cart-items');
+  const cartTotal = document.getElementById('cart-total');
+  const cart = getCart();
+  cartList.innerHTML = '';
+  let total = 0;
+  cart.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.textContent = `${item.name} - $${item.price}`;
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove';
+    removeButton.addEventListener('click', () => {
+      removeFromCart(index);
+    });
+    li.appendChild(removeButton);
+    cartList.appendChild(li);
+    total += item.price;
+  });
+  cartTotal.textContent = total.toFixed(2);
+}
+
+function getCart() {
+  const cart = localStorage.getItem('cart');
+  return cart ? JSON.parse(cart) : [];
+}
+
+function saveCart(cart) {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+function removeFromCart(index) {
+  const cart = getCart();
+  cart.splice(index, 1);
+  saveCart(cart);
+  updateCartDisplay();
+}
+
+function checkout() {
+  const addressForm = `
+    <form id="address-form" style="background-color: #f4f4f9; padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+      <h3 style="color: #333; font-weight: bold; margin-bottom: 20px;">Checkout</h3>
+      <label for="name" style="color: #666; font-size: 16px;">Name:</label>
+      <input type="text" id="name" name="name" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;"><br><br>
+      <label for="address" style="color: #666; font-size: 16px;">Address:</label>
+      <input type="text" id="address" name="address" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;"><br><br>
+      <label for="gmail" style="color: #666; font-size: 16px;">Gmail:</label>
+      <input type="email" id="gmail" name="gmail" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;"><br><br>
+      <label for="phone" style="color: #666; font-size: 16px;">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 5px;"><br><br>
+      <button id="submit-address" style="background-color: #4b4b7e; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+    </form>
+  `;
+  const addressModal = document.createElement("div");
+  addressModal.innerHTML = addressForm;
+  addressModal.style.position = "fixed";
+  addressModal.style.top = "50%";
+  addressModal.style.left = "50%";
+  addressModal.style.transform = "translate(-50%, -50%)";
+  document.body.appendChild(addressModal);
+  const submitButton = document.getElementById("submit-address");
+  submitButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("name").value;
+    const address = document.getElementById("address").value;
+    const gmail = document.getElementById("gmail").value;
+    const phone = document.getElementById("phone").value;
+    if (name && address && gmail && phone) {
+      alert(`Thank you for your order, ${name}! Your order will be delivered to ${address} in 3-5 business days. A confirmation email will be sent to ${gmail} and a confirmation SMS will be sent to ${phone} shortly.`);
+      addressModal.remove();
+    } else {
+      alert("Please enter all the required fields.");
+    }
+  });
+}
+document.addEventListener('DOMContentLoaded', function() {
+    updateCartDisplay();
+  });
+  function openCheckout() {
+            document.getElementById('checkout-modal').classList.add('active');
+        }
+
+        function submitCheckout() {
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const email = document.getElementById('email').value;}
+
+            if (name && address && email) {
+                alert(`Thank you, ${name}! Your order will be delivered to ${address}.`);
+                cart.length = 0;
+                localStorage}
+
+                </script>
+</body>
+</html>
